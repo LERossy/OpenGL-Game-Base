@@ -60,7 +60,7 @@ void Scene::Init()
 	//Basic Cubes
 	Beam block1;
 	block1.Position = glm::vec3(-5.0f, 0.0f, 0.0f);
-	block1.Size =  glm::vec3(1.0f, 10.0f, 0.5f);
+	block1.Size =  glm::vec3(1.0f);
 	block1.Rotation = 0.0f;
 	block1.Axis = glm::vec3(0.0f, 0.0f, 1.0f);
 	this->Beams.push_back(block1);
@@ -74,9 +74,9 @@ void Scene::Init()
 	
 	Beam block3;
 	block3.Position = glm::vec3(0.0f, 5.0f, 0.0f);
-	block3.Size = glm::vec3(1.0f, 0.5f, 10.0f);
-	block3.Rotation = 45.0f;
-	block3.Axis = glm::vec3(0.0f, 1.0f, 0.0f);
+	block3.Size = glm::vec3(1.0f);
+	block3.Rotation = 0.0f;
+	block3.Axis = glm::vec3(0.0f, 0.0f, 1.0f);
 	this->Beams.push_back(block3);
 	
 	Beam block4;
@@ -202,42 +202,6 @@ void Scene::Render()
     ResourceManager::GetShader("iconShader").SetMatrix4("projection", projection);
     Icons->DrawIcon(cross, glm::vec2(this->Width/2.0, this->Height/2.0), glm::vec2(10.0f, 10.0f));
     */
-}
-
-void Scene::crossLinkage(int beam1, int beam2, glm::vec3 centre, float angle, unsigned int axis) 
-{
-	switch (axis) {
-		case 1:		//aligned along y-axis
-			Beams[beam1].Position = glm::vec3(centre.x, centre.y - 0.5f, centre.z);
-			Beams[beam1].Axis = glm::vec3(0.0f, 1.0f, 0.0f);
-			Beams[beam1].Rotation = 0.0f;		//For now
-			
-			Beams[beam2].Position = glm::vec3(centre.x, centre.y + 0.5f, centre.z);
-			Beams[beam2].Axis = glm::vec3(0.0f, 1.0f, 0.0f);
-			Beams[beam2].Rotation = glm::radians(angle);
-			break;
-		
-		case 2: 	//aligned along x-axis
-			Beams[beam1].Position = glm::vec3(centre.x - 0.5f, centre.y, centre.z);
-			Beams[beam1].Axis = glm::vec3(1.0f, 0.0f, 0.0f);
-			Beams[beam1].Rotation = 0.0f;		//For now
-			
-			Beams[beam2].Position = glm::vec3(centre.x + 0.5f, centre.y, centre.z);
-			Beams[beam2].Axis = glm::vec3(1.0f, 0.0f, 0.0f);
-			Beams[beam2].Rotation = glm::radians(angle);
-			break;
-		
-		case 3:		//aligned along z-axis
-			Beams[beam1].Position = glm::vec3(centre.x, centre.y, centre.z - 0.5f);
-			Beams[beam1].Axis = glm::vec3(0.0f, 0.0f, 1.0f);
-			Beams[beam1].Rotation = 0.0f;		//For now
-			
-			Beams[beam2].Position = glm::vec3(centre.x, centre.y, centre.z + 0.5f);
-			Beams[beam2].Axis = glm::vec3(0.0f, 0.0f, 1.0f);
-			Beams[beam2].Rotation = glm::radians(angle);
-			break;
-	}
-			
 }
         
         
