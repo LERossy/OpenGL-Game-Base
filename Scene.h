@@ -62,8 +62,6 @@ class Scene
         void ProcessInput(float dt);
         void Update(float dt);
         void Render();
-        
-        void crossLinkage(int beam1, int beam2, glm::vec3 centre, float angle, unsigned int axis);
 };
 
 #endif
